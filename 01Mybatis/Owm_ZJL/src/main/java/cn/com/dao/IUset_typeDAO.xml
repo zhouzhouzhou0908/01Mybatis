@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.IUset_typeDAO">
+    <resultMap id="myMap" type="user_type">
+        <id column="user_type_id" property="user_type_id"></id>
+        <result column="user_type_name" property="user_type_name"></result>
+        <collection property="log" ofType="user_login">
+            <id column="user_id" property="user_id"></id>
+            <result column="user_name" property="user_name"></result>
+        </collection>
+    </resultMap>
+
+
+    <resultMap id="MitMap" type="user_type">
+        <id column="user_type_id" property="user_type_id"></id>
+        <result column="user_type_name" property="user_type_name"></result>
+        <collection property="log" ofType="user_login" select="getNo" column="user_type_id">
+
+        </collection>
+    </resultMap>
+    <select id="getNo" resultType="user_login">
+        SELECT  * FROM user_login WHERE user_type_id=#{user_type_id}
+    </select>
+
+<select id="uus" resultMap="myMap">
+    SELECT user_type.user_type_id,user_type_name,user_id,user_name  FROM user_type,user_login WHERE user_type.user_type_id=user_login.`user_type_id` AND user_type.user_type_id=#{user_type_id}
+</select>
+
+    <select id="uuMitsql" resultMap="MitMap">
+        SELECT  * FROM user_type WHERE user_type_id=#{user_type_id}
+    </select>
+
+
+
+
+</mapper>

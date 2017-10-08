@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zjl.dao.IUserDao">
+
+    <resultMap id="myMap" type="userinfo" autoMapping="false">
+    <id property="userid" column="userid"></id>
+        <result property="username" column="username"></result>
+
+    </resultMap>
+    <!--查询-->
+    <select id="select_Final"  resultMap="myMap">
+        select * from userinfo
+    </select>
+    <!--添加的方法-->
+    <insert id="insert_Final">
+       INSERT INTO  userinfo(username,userpwd) VALUES (#{username},#{userpwd})
+       <selectKey resultType="int" keyProperty="userid">
+           SELECT @@IDENTITY
+       </selectKey>
+    </insert>
+
+    <!--修改的方法-->
+    <update id="update_Final">
+        UPDATE  userinfo SET username=#{username}where userid=#{userid}
+    </update>
+    <!--删除的方法：测试 测试 测试-->
+    <delete id="date_Final">
+        DELETE  FROM  userinfo WHERE userid=#{userid}
+    </delete>
+
+    <!--添加的方法-->
+    <insert id="insert_Final1">
+        INSERT INTO  userinfo(username,userpwd) VALUES (#{username},#{userpwd})
+    </insert>
+    <!--模糊查询-->
+    <select id="selects" resultType="userinfo">
+  SELECT * FROM userinfo WHERE username LIKE '%' #{username} '%'
+
+    </select>
+<!--多条件-->
+    <select id="sele" resultType="userinfo">
+        SELECT * FROM userinfo WHERE username LIKE '%' #{username} '%' AND userpwd>#{userpwd}
+    </select>
+    <!--索引查询-->
+    <select id="finselect" resultType="userinfo">
+        SELECT  * FROM  userinfo WHERE username LIKE '%' #{0} '%'AND userpwd>#{1}
+    </select>
+    <!--智能标签-->
+    <select id="ss" resultType="userinfo">
+        SELECT  * FROM  userinfo
+        <where>
+          <if test="username!=null">
+              AND username LIKE '%' #{username} '%'
+          </if>
+            <if test="userid!=null">
+                AND  userid>#{userid}
+            </if>
+        </where>
+    </select>
+    <!--智能标签-数组-->
+    <select id="szselect" resultType="userinfo">
+        SELECT * FROM userinfo
+        <where>
+            <if test="array.length>0">
+                userid IN 
+                <foreach collection="array" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>

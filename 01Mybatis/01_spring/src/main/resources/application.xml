@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+            <bean id="service" class="cn.zjl.Day01.zjl_Service" >
+                <property name="info" value="++++spring"></property>
+            </bean>
+    <!--墨盒-->
+    <bean id="cartridge" class="cn.zjl.Day02.ink.ColorInk"></bean>
+
+    <!--纸张-->
+    <bean id="paper" class="cn.zjl.Day02.paper.B5paper"></bean>
+
+    <!--打印机-->
+    <bean id="Printer" class="cn.zjl.Day02.printer.print">
+        <property name="ink" ref="cartridge"></property>
+        <property name="paper" ref="paper"></property>
+    </bean>
+
+
+</beans>

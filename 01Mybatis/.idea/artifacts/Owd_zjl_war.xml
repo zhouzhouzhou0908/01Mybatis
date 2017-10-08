@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Owd_zjl:war">
+    <output-path>$PROJECT_DIR$/Owd_zjl/target</output-path>
+    <root id="archive" name="Smbms-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Owd_zjl:war exploded" />
+    </root>
+  </artifact>
+</component>

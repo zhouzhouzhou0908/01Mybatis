@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.ISmbmsUserDAO">
+
+    <!--登陆-->
+    <select id="userlogin" resultType="Smbms_user">
+        SELECT *  FROM smbms_user where userCode=#{userCode} and userPassword=#{userPassword}
+    </select>
+
+    <!--分页查询列表-->
+    <select id="userListpage" resultType="Smbms_user">
+        select * from smbms_user limit #{0},#{1}
+    </select>
+
+    <select id="userfy" resultType="int">
+       SELECT COUNT(1) AS COUNT FROM smbms_user
+    </select>
+
+    <!--查询列表-->
+    <select id="userList" resultType="Smbms_user">
+        select * from smbms_user
+    </select>
+
+    <!--添加用户-->
+    <insert id="userAdd" parameterType="int">
+        INSERT INTO smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userType)
+        VALUE(#{userCode},#{userName},#{userPassword},#{gender},#{birthday},#{phone},#{address},#{userType})
+    </insert>
+
+    <!--删除用户-->
+    <delete id="userDel" parameterType="int">
+        DELETE FROM smbms_user WHERE id=#{id}
+    </delete>
+
+    <!--模糊查询-->
+    <select id="userLikeList" resultType="Smbms_user">
+        SELECT * FROM  smbms_user WHERE username LIKE '%' #{userName} '%'
+    </select>
+
+    <!--获取修改内容-->
+    <select id="userByList" resultType="Smbms_user">
+        SELECT * from smbms_user where id=#{id}
+    </select>
+
+    <!--修改-->
+    <update id="userUpd" parameterType="int">
+        UPDATE smbms_user SET userName=#{userName},gender=#{gender},birthday=#{birthday},phone=#{phone},userType=#{userType} WHERE id=#{id}
+    </update>
+
+</mapper>

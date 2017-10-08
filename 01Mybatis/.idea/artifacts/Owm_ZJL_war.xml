@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Owm_ZJL:war">
+    <output-path>$PROJECT_DIR$/Owm_ZJL/target</output-path>
+    <root id="archive" name="01Mybatis.war">
+      <element id="artifact" artifact-name="Owm_ZJL:war exploded" />
+    </root>
+  </artifact>
+</component>

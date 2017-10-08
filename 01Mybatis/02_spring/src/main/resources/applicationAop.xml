@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--DAO层-->
+    <bean id="AopSomeDAO" class="cn.zjl.DAO.UserDAOImpl"></bean>
+    <!--Service层-->
+    <bean id="AopSomeService" class="cn.zjl.Service.UserServiceImpl">
+        <property name="dao" ref="AopSomeDAO"></property>
+    </bean>
+    <!--增强-->
+    <bean id="AopBerfor" class="cn.zjl.AOP.LogAdd">
+
+    </bean>
+
+    <!--切面配置-->
+        <aop:config>
+            <!--切面-->
+            <aop:pointcut id="mypointcut" expression="execution(* *..Service.*.*(..))"></aop:pointcut>
+            <!--织入-->
+            <aop:advisor advice-ref="AopBerfor" pointcut-ref="mypointcut"></aop:advisor>
+
+        </aop:config>
+
+
+    <bean id="hhh" class="cn.zjl.entity.UserStu">
+        <constructor-arg index="0" value="1"></constructor-arg>
+        <constructor-arg index="1" value="周金龙"></constructor-arg>
+        <constructor-arg index="2" value="17"></constructor-arg>
+        <constructor-arg index="3" value="北京"></constructor-arg>
+
+    </bean>
+
+            <bean id="Ren" class="cn.zjl.DAO.UserRen">
+                <property name="array">
+                <array>
+                    <value>她</value>
+                    <value>17</value>
+                </array>
+
+            </property>
+                <property name="list">
+                    <list>
+                        <value>他</value>
+                        <value>18</value>
+                    </list>
+                </property>
+                <property name="set">
+                    <set>
+                        <value>哈哈哈哈哈</value>
+                        <value>别哭了</value>
+                    </set>
+                </property>
+                <property name="map">
+                    <map>
+                        <entry key="001">
+                            <value>哈哈哈哈隔~</value>
+                        </entry>
+                        <entry key="002">
+                            <value>这是一次严重的测试</value>
+                        </entry>
+                    </map>
+                </property>
+                <property name="properties">
+                    <props>
+                        <prop key="001">那就</prop>
+                        <prop key="002">这样吧</prop>
+                    </props>
+                </property>
+            </bean>
+
+    <bean id="car" class="cn.zjl.entity.Car">
+        <property name="bard" value="科尼赛克"></property>
+    </bean>
+    <bean id="ren" class="cn.zjl.entity.Rens" autowire="byType">
+        <property name="name" value="周金龙"></property>
+        <property name="age" value="18"></property>
+    </bean>
+
+
+
+
+
+</beans>

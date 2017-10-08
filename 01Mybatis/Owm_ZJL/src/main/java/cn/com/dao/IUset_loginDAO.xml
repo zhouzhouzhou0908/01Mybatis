@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.dao.IUset_loginDAO">
+    <resultMap id="logMap" type="user_login">
+        <id column="user_id" property="user_id"></id>
+        <result column="user_name" property="user_name"></result>
+        <association property="types" javaType="user_type">
+            <id column="user_type_id" property="user_type_id"></id>
+            <result column="user_type_name" property="user_type_name"></result>
+        </association>
+    </resultMap>
+
+    <resultMap id="MitSql" type="user_login">
+        <id column="user_id" property="user_id"></id>
+        <result column="user_name" property="user_name"></result>
+        <association property="types" javaType="user_type" select="Mitgg" column="user_type_id">
+        </association>
+    </resultMap>
+    <select id="Mitgg" resultType="user_type">
+        SELECT  * FROM user_type WHERE user_type_id=#{user_type_id}
+    </select>
+
+    <select id="logcad" resultMap="logMap">
+        SELECT user_type_name,user_type.user_type_id,user_name,user_id FROM user_login,user_type WHERE user_type.user_type_id=user_login.user_type_id AND user_id=#{user_id}
+    </select>
+
+
+    <select id="logMit" resultMap="MitSql">
+        SELECT  * FROM  user_login WHERE  user_id=#{user_id}
+    </select>
+
+
+
+
+
+
+</mapper>

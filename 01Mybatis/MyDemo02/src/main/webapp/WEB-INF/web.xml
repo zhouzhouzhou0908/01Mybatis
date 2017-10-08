@@ -1,0 +1,22 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+
+
+    <servlet>
+        <servlet-name>newsServlet</servlet-name>
+        <servlet-class>cn.com.servlet.newsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newsServlet</servlet-name>
+        <url-pattern>/newsServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>newsServlet</welcome-file>
+    </welcome-file-list>
+</web-app>

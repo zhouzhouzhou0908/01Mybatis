@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="01_Demo" />
+        <module name="01_spring" />
+        <module name="02_spring" />
+        <module name="ajax" />
+        <module name="MyDemo02" />
+        <module name="Owm_ZJL" />
+      </profile>
+      <profile name="Annotation profile for 01Mybatis Maven Webapp" enabled="true">
+        <sourceOutputDir name="../01_Demo/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../01_Demo/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="01_Demo (1)" />
+        <module name="01_Demo (2)" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01_Demo" target="1.5" />
+      <module name="01_Demo (1)" target="1.5" />
+      <module name="01_Demo (2)" target="1.5" />
+      <module name="01_Spring" target="1.5" />
+      <module name="01_spring" target="1.5" />
+      <module name="01Mybatis" target="1.5" />
+      <module name="01Sqring" target="1.5" />
+      <module name="02_spring" target="1.5" />
+      <module name="_01Mybatis" target="1.5" />
+      <module name="_02_spring" target="1.5" />
+      <module name="ajax" target="1.5" />
+      <module name="Condition" target="1.5" />
+      <module name="CondiTion" target="1.5" />
+      <module name="MyDemo02" target="1.5" />
+      <module name="Owd_zjl" target="1.5" />
+      <module name="Owm_ZJL" target="1.5" />
+      <module name="Own_Demo" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
